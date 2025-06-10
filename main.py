@@ -100,4 +100,5 @@ def main(page: ft.Page):
     page.add(fila_botones)
 
 # Ejecutar la app en navegador
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=8501, host="0.0.0.0")
+
