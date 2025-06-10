@@ -1,17 +1,15 @@
 FROM python:3.11-slim
 
-# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de la aplicación al contenedor
+# Copiar requerimientos e instalarlos
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar el resto del código
 COPY . .
 
-# Instala dependencias
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Expone el puerto que usará la aplicación
 EXPOSE 8501
 
-# Comando por defecto
+# Iniciar la app con Flet
 CMD ["python", "main.py"]
