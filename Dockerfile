@@ -1,15 +1,18 @@
+# Usa una imagen oficial de Python 3.11
 FROM python:3.11-slim
 
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copiar requerimientos e instalarlos
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copiar el resto del código
+# Copia los archivos del proyecto
 COPY . .
 
+# Instala las dependencias
+RUN pip install --upgrade pip \
+    && pip install flet supabase
+
+# Puerto donde correrá la app
 EXPOSE 8501
 
-# Iniciar la app con Flet
+# Comando para ejecutar tu app (ajústalo si tu archivo principal no se llama main.py)
 CMD ["python", "main.py"]
