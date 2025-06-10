@@ -1,7 +1,8 @@
 app = "farmacia-ujat-app"
 
 [build]
-  builder = "Dockerfile"
+  dockerfile = "Dockerfile"
+
 
 [env]
   PORT = "8501"
